@@ -92,6 +92,19 @@ Template.houseForm.events({
     };
     updateLocalHouse(Session.get('selectedHouseId'), modifier);
   },
+  'click button.addPlant': function (evt) {
+    evt.preventDefault();
+    var newPlant = {
+      color: '',
+      instructions: ''
+    };
+    var modifier = {
+      $push: {
+        'plants': newPlant
+      }
+    };
+    updateLocalHouse(Session.get('selectedHouseId'), modifier);
+  },
   'click button#saveHouse': function (evt) {
     evt.preventDefault();
     var houseName = $('input[id=house-name]').val();
