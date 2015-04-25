@@ -1,1 +1,23 @@
 /* CSS declarations go here */
+
+.container {
+  width: 95%;
+  position: relative;
+}
+.left {
+  float: left;
+  width: 50%;
+  margin-right: 2%;
+}
+.right {
+  float: right;
+  width: 47%;
+}
+.reminder {
+  background-color: green;
+  color: white;
+}
+.warning {
+  background-color: red;
+  color: white;
+}
