@@ -4,7 +4,15 @@
 
 <body>
   <h1>The House-Sitter App</h1>
-  {{> selectHouse }} {{> showHouse }} {{> houseForm }}
+  {{> selectHouse }}
+  <div class="container">
+    <div class="left">
+      {{> showHouse }}
+    </div>
+    <div class="right">
+      {{> houseForm }}
+    </div>
+  </div>
 </body>
 
 <template name="selectHouse">
