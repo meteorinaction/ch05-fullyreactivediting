@@ -32,7 +32,7 @@
 
 
 <template name="showHouse">
-  {{#with selectedHouse}}
+  {{#with houseFromDb}}
   <h2>Taking care of {{name}}'s house</h2>
   <p>Last visit: {{lastvisit}} </p>
   {{#each plants }} {{> plantDetails }} {{/each}}

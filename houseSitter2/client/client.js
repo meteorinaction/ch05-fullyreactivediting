@@ -57,6 +57,13 @@ Template.selectHouse.events({
   }
 });
 
+Template.showHouse.helpers({
+  houseFromDb: function () {
+    return HousesCollection.findOne({
+      _id: Session.get('selectedHouseId')
+    });
+  }
+});
 Template.showHouse.events({
   'click button#delete': function (evt) {
     var id = this._id;
@@ -98,7 +105,7 @@ Template.houseForm.onCreated(function () {
       HousesCollection.findOne(Session.get('selectedHouseId')).lastsave) {
       Session.set('notification', {
         type: 'warning',
-        text: 'This document has been changed inside the database!'
+        text: 'This document has been changed inside the database! Check the document on the left for differences.'
       });
     } else if (LocalHouse.findOne(Session.get('selectedHouseId')) && LocalHouse.findOne(Session.get('selectedHouseId')).status === 'unsaved') {
       Session.set('notification', {
