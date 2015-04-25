@@ -13,6 +13,10 @@ Tracker.autorun(function () {
   );
 });
 
+Template.registerHelper('selectedHouse', function () {
+  return LocalHouse.findOne(Session.get('selectedHouseId'));
+});
+
 Template.selectHouse.helpers({
   housesNameId: function () {
     return HousesCollection.find({}, {
