@@ -99,3 +99,11 @@ Template.houseForm.events({
     $('input').val('');
   }
 });
+
+updateLocalHouse = function (id, modifier) {
+  LocalHouse.update({
+      '_id': id
+    },
+    modifier
+  );
+};
