@@ -105,20 +105,21 @@ Template.houseForm.events({
     };
     updateLocalHouse(Session.get('selectedHouseId'), modifier);
   },
-  'click button#saveHouse': function (evt) {
+  'click button#save-house': function (evt) {
     evt.preventDefault();
-    var houseName = $('input[id=house-name]').val();
-    var plantColor = $('input[id=plant-color]').val();
-    var plantInstructions = $('input[id=plant-instructions]').val();
-    Session.set('selectedHouseId', HousesCollection.insert({
-      name: houseName,
-      plants: [{
-        color: plantColor,
-        instructions: plantInstructions
-      }]
-    }));
-    // empty the form
-    $('input').val('');
+    var id = Session.get('selectedHouseId');
+    var modifier = {
+      $set: {
+        'lastsave': new Date()
+      }
+    };
+    updateLocalHouse(id, modifier);
+    // persist house document in remote db
+    HousesCollection.upsert({
+        _id: id
+      },
+      LocalHouse.findOne(id)
+    );
   }
 });
 
