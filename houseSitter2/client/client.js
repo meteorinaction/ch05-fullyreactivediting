@@ -56,7 +56,10 @@ Template.showHouse.events({
     var id = this._id;
     var deleteConfirmation = confirm('Really delete this house?');
     if (deleteConfirmation) {
+      // remove from remote db
       HousesCollection.remove(id);
+      // remove from local collection
+      LocalHouse.remove(id);
     }
   }
 });
