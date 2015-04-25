@@ -26,11 +26,17 @@ Template.selectHouse.helpers({
     return Session.equals('selectedHouseId', this._id) ? 'selected' : '';
   }
 });
-Template.selectHouse.events = {
+Template.selectHouse.events({
   'change #selectHouse': function (evt) {
-    Session.set('selectedHouseId', evt.currentTarget.value);
+    var selectedId = evt.currentTarget.value;
+    var newId = LocalHouse.upsert(
+      selectedId,
+      HousesCollection.findOne(selectedId) || newHouse
+    ).insertedId;
+    if (!newId) newId = selectedId;
+    Session.set('selectedHouseId', newId);
   }
-};
+});
 
 Template.showHouse.helpers({
   house: function () {
