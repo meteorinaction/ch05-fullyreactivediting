@@ -90,7 +90,8 @@ Template.houseForm.events({
     evt.preventDefault();
     var modifier = {
       $set: {
-        'name': evt.currentTarget.value
+        'name': evt.target.value,
+        'status': 'unsaved'
       }
     };
     updateLocalHouse(Session.get('selectedHouseId'), modifier);
@@ -104,6 +105,9 @@ Template.houseForm.events({
     var modifier = {
       $push: {
         'plants': newPlant
+      },
+      $set: {
+        'status': 'unsaved'
       }
     };
     updateLocalHouse(Session.get('selectedHouseId'), modifier);
@@ -113,7 +117,8 @@ Template.houseForm.events({
     var id = Session.get('selectedHouseId');
     var modifier = {
       $set: {
-        'lastsave': new Date()
+        'lastsave': new Date(),
+        'status': 'saved'
       }
     };
     updateLocalHouse(id, modifier);
@@ -134,7 +139,8 @@ Template.plantFieldset.events({
     plants.splice(index, 1);
     var modifier = {
       $set: {
-        'plants': plants
+        'plants': plants,
+        'status': 'unsaved'
       }
     };
     updateLocalHouse(Session.get('selectedHouseId'), modifier);
@@ -148,6 +154,7 @@ Template.plantFieldset.events({
       $set: {}
     };
     modifier['$set'][plantProperty] = evt.target.value;
+    modifier['$set'].status = 'unsaved';
 
     updateLocalHouse(Session.get('selectedHouseId'), modifier);
   }
