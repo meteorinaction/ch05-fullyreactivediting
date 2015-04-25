@@ -56,8 +56,8 @@
 <template name="plantFieldset">
   <fieldset>
     Color
-    <input class="color" type="text" value="{{color}}"> Instructions
-    <input class="instructions" type="text" value="{{instructions}}">
-    <button class="removePlant">Remove Plant</button>
+    <input class="color" type="text" value="{{color}}" data-index="{{index}}"> Instructions
+    <input class="instructions" type="text" value="{{instructions}}" data-index="{{index}}">
+    <button class="removePlant" data-index="{{index}}">Remove Plant</button>
   </fieldset>
 </template>
