@@ -26,6 +26,12 @@ Template.registerHelper('withIndex', function (list) {
   return withIndex;
 });
 
+Template.notificationArea.helpers({
+  notification: function () {
+    return Session.get('notification');
+  }
+});
+
 Template.selectHouse.helpers({
   housesNameId: function () {
     return HousesCollection.find({}, {
