@@ -45,7 +45,7 @@
       <br/>
     </fieldset>
     <label>Plants</label>
-    {{#each plants}} {{> plantFieldset}} {{/each}}
+    {{#each withIndex plants}} {{> plantFieldset}} {{/each}}
     <button class="addPlant">Add Plant</button>
     <br/>
     <button id="save-house" data-id="{{_id}}">Save House</button>
