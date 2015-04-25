@@ -1,3 +1,12 @@
+LocalHouse = new Mongo.Collection(null);
+var newHouse = {
+  name: '',
+  plants: [],
+  lastsave: 'never',
+  status: 'unsaved'
+};
+Session.setDefault('selectedHouseId', '');
+
 Tracker.autorun(function () {
   console.log('The selectedHouse ID is: ' +
     Session.get('selectedHouseId')
