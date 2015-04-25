@@ -91,6 +91,25 @@ Template.plantDetails.events({
   }
 });
 
+Template.houseForm.onCreated(function () {
+  this.autorun(function () {
+    if (HousesCollection.findOne(Session.get('selectedHouseId')) &&
+      LocalHouse.findOne(Session.get('selectedHouseId')).lastsave <
+      HousesCollection.findOne(Session.get('selectedHouseId')).lastsave) {
+      Session.set('notification', {
+        type: 'warning',
+        text: 'This document has been changed inside the database!'
+      });
+    } else if (LocalHouse.findOne(Session.get('selectedHouseId')) && LocalHouse.findOne(Session.get('selectedHouseId')).status === 'unsaved') {
+      Session.set('notification', {
+        type: 'reminder',
+        text: 'Remember to save your changes'
+      });
+    } else {
+      Session.set('notification', '');
+    }
+  })
+});
 Template.houseForm.events({
   'keyup input#house-name': function (evt) {
     evt.preventDefault();
