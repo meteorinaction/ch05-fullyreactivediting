@@ -18,7 +18,7 @@
 
 
 <template name="showHouse">
-  {{#with house}}
+  {{#with selectedHouse}}
   <h2>Taking care of {{name}}'s house</h2>
   <p>Last visit: {{lastvisit}} </p>
   {{#each plants }} {{> plantDetails }} {{/each}}
