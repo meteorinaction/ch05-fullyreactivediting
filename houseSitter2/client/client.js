@@ -124,6 +124,18 @@ Template.houseForm.events({
 });
 
 Template.plantFieldset.events({
+  'click button.removePlant': function (evt) {
+    evt.preventDefault();
+    var index = evt.target.getAttribute('data-index');
+    var plants = Template.parentData(1).plants;
+    plants.splice(index, 1);
+    var modifier = {
+      $set: {
+        'plants': plants
+      }
+    };
+    updateLocalHouse(Session.get('selectedHouseId'), modifier);
+  },
   'keyup input.color, keyup input.instructions': function (evt) {
     evt.preventDefault();
     var index = evt.target.getAttribute('data-index');
