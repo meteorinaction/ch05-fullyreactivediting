@@ -15,6 +15,12 @@
   </div>
 </body>
 
+<template name="notificationArea">
+  {{#if notification}}
+  <p class="{{notification.type}}">{{notification.text}}</p>
+  {{/if}}
+</template>
+
 <template name="selectHouse">
   <select id="selectHouse">
     <option value="" {{isSelected}}></option>
