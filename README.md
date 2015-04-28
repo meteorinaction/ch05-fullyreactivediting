@@ -3,6 +3,8 @@ Chapter 5: Fully Reactive Editing
 
 Code Samples and Snippets for the book Meteor in Action
 
+See a live version at <http://mia-chapter5.meteor.com/>.
+
 ![Meteor in Action
 cover](http://www.manning.com/hochhaus/hochhaus_cover150.jpg)
 
