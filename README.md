@@ -1,4 +1,4 @@
-Chapter 4: Fully Reactive Editing
+Chapter 5: Fully Reactive Editing
 =================================
 
 Code Samples and Snippets for the book Meteor in Action
