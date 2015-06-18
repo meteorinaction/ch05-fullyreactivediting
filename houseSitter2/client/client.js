@@ -17,6 +17,10 @@ Template.registerHelper('selectedHouse', function () {
   return LocalHouse.findOne(Session.get('selectedHouseId'));
 });
 
+Template.registerHelper('selectedHouseId', function () {
+  return Session.get('selectedHouseId');
+});
+
 Template.registerHelper('withIndex', function (list) {
   var withIndex = _.map(list, function (v, i) {
     if (v === null) return;
@@ -72,7 +76,7 @@ Template.showHouse.events({
 
 Template.plantDetails.helpers({
   isWatered: function () {
-    var plantId = Session.get('selectedHouseId') + '-' + this.color;
+    var plantId = Session.get('selectedHouseId') + '-' + this.index;
     return Session.get(plantId) ? 'disabled' : '';
   }
 });
